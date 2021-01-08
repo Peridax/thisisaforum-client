@@ -1,5 +1,10 @@
+const config = require('./../config')
+
 const signUp = (credentials) => {
-  console.log('signed up')
+  return $.ajax({
+    url: config.url,
+    method: 'GET'
+  })
 }
 
 module.exports = {

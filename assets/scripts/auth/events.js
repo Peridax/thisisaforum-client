@@ -9,6 +9,8 @@ const onSignUp = (event) => {
 
   if (errorHandler.notEmpty(formData)) {
     api.signUp(formData)
+      .then(console.log)
+      .catch(console.error)
   }
 }
 
