@@ -1,1 +1,56 @@
 @import '~bootstrap/scss/bootstrap';
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
+
+/*
+
+Ideas:
+Show recent posts on the home unauthorized page
+
+*/
+
+html, body {
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+
+body {
+  background-color: #efefef;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.navbar {
+  #navbar-links {
+    justify-content: flex-end;
+  }
+}
+
+.main-content {
+  margin-top: 50px;
+}
+
+.container {
+  height: 100%;
+  width: 100%;
+}
+
+.authenticated, .settings, .nav-link-authenticated {
+  display: none;
+}
+
+.box {
+  @extend .border;
+	background-color: #fff;
+	border-radius: 3px;
+	padding: 25px;
+
+}
+
+.section-title {
+  margin-bottom: .25rem;
+}
+
+.section-title-spacer {
+  @extend .section-title;
+  height: 24px;
+}
