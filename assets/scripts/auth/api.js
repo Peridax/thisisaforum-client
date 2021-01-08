@@ -2,7 +2,7 @@ const config = require('./../config')
 
 const signUp = (credentials) => {
   return $.ajax({
-    url: config.url,
+    url: config.apiUrl,
     method: 'GET'
   })
 }
