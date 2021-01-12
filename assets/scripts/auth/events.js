@@ -32,6 +32,8 @@ const onSignIn = (event) => {
   if (errorHandler.notEmpty(formData)) {
     api.signIn(formData)
       .then(store.storeUser)
+      .then(() => api.getSubforums(store.user.token))
+      .then(ui.updateSubforums)
       .then(ui.onSignIn)
       .then(() => { event.target.reset() })
       .catch((error) => errorHandler.signIn(error, formData))
@@ -81,9 +83,12 @@ const onCreateSubforum = (event) => {
   $('#createSubforumModal').modal('hide')
   const formData = getFormFields(event.target)
 
-  // api.createSubforum(formData)
-  //   .then(console.log)
-  //   .catch(console.error)
+  api.createSubforum(formData, store.user.token)
+    .then(ui.onCreateSubforum)
+    .then(() => api.getSubforums(store.user.token))
+    .then(ui.updateSubforums)
+    .catch(console.error)
+    .then(() => { event.target.reset() })
 }
 
 module.exports = {

@@ -37,9 +37,33 @@ const changePassword = (password, token) => {
   })
 }
 
+const createSubforum = (data, token) => {
+  return $.ajax({
+    url: config.apiUrl + '/subforum',
+    method: 'POST',
+    headers: {
+      Authorization: 'Bearer ' + token
+    },
+    data: data
+  })
+}
+
+const getSubforums = (token) => {
+  return $.ajax({
+    url: config.apiUrl + '/subforum',
+    method: 'GET',
+    headers: {
+      Authorization: 'Bearer ' + token
+    }
+  })
+}
+
 module.exports = {
   signUp,
   signOut,
   signIn,
-  changePassword
+  changePassword,
+
+  createSubforum,
+  getSubforums
 }

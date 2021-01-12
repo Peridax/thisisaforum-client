@@ -73,12 +73,33 @@ const alert = (message, type = 'success', authenticated) => {
   globalTimeout = setTimeout(() => { $('.alert').alert('close') }, 8000) // Make alerts go away after 8 seconds
 }
 
+const onCreateSubforum = (data) => {
+  alert('Successfully created <strong>' + data.subforum.title + '</strong> as a subforum!', 'success', true)
+}
+
+const updateSubforums = (subforums) => {
+  let tempHtml = ''
+
+  if (subforums) {
+    for (const i in subforums.subforums) {
+      const sub = subforums.subforums[i]
+      tempHtml += `<tr> <td><a href="#">${sub.title}</a></td> <td class="text-center">${sub.threadsLength}</td> </tr>`
+    }
+  }
+
+  $('.forum tbody').html(tempHtml)
+}
+
 module.exports = {
   onSignUp,
   onSignIn,
   onSignOut,
   onChangePassword,
+
   toggleForm,
   navUpdate,
-  alert
+  alert,
+
+  updateSubforums,
+  onCreateSubforum
 }
