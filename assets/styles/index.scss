@@ -19,9 +19,26 @@ body {
   font-family: 'Open Sans', sans-serif;
 }
 
-.navbar {
-  #navbar-links {
-    justify-content: flex-end;
+nav {
+  &.navbar {
+    #navbar-links {
+      justify-content: flex-end;
+    }
+  }
+
+  &[aria-label="breadcrumb"] {
+    padding: 0!important;
+  }
+
+  .breadcrumb {
+    background-color: transparent;
+    margin-bottom: 0;
+    padding: 0 0 .25rem 0;
+    color: #000;
+
+    .active {
+      color: #000;
+    }
   }
 }
 
@@ -34,7 +51,15 @@ body {
   width: 100%;
 }
 
-.authenticated, .settings, .nav-link-authenticated {
+.settings, .nav-link-authenticated {
+  display: none;
+}
+
+.authenticated {
+  display: none;
+}
+
+.subforum, .thread {
   display: none;
 }
 
@@ -53,4 +78,87 @@ body {
 .section-title-spacer {
   @extend .section-title;
   height: 24px;
+}
+
+.forum {
+  thead {
+    background-color: $primary;
+    color: #fff;
+
+    th {
+      font-weight: normal;
+      border: 0;
+    }
+
+    th:first-child{
+      border-radius: 2px 0 0 0;
+    }
+
+    th:last-child{
+      border-radius: 0 2px 0 0;
+    }
+  }
+
+  tbody {
+    a {
+      color: #000;
+    }
+  }
+
+  .title-col {
+    width: percentage(7/10);
+  }
+
+  .threads-col {
+    width: percentage(3/10);
+  }
+}
+
+.subforum {
+  @extend .forum;
+
+  .title-col {
+    width: percentage(6/10);
+  }
+
+  .replies-col, .poster-col {
+    width: percentage(2/10);
+  }
+}
+
+.thread {
+  @extend .forum
+}
+
+.user-action-link {
+  padding: .75rem 0;
+  background-color: transparent;
+
+  &:hover {
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.025)
+  }
+
+  &:focus {
+    background-color: rgba(0, 0, 0, 0.025)
+  }
+}
+
+/* Media Queries */
+@media (max-width: 992px) {
+  nav {
+    padding: 0 15px;
+  }
+}
+
+@media (max-width: 991.98px) {
+  .navbar-expand-lg > .container {
+    padding: 0 15px;
+  }
+}
+
+@media (max-width: 575px) {
+  .navbar-expand-lg > .container {
+    padding: 0
+  }
 }
