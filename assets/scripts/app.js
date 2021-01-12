@@ -11,14 +11,12 @@ $(() => {
     { id: '#sign-in', on: 'submit', cb: events.onSignIn },
     { id: '#logout-link', on: 'click', cb: events.onSignOut },
     { id: '#change-password', on: 'submit', cb: events.onChangePassword },
-    { id: '#changePasswordButton', on: 'click', cb: $('#change-password').submit() },
 
     // Forum & thread buttons
     { id: '.create-thread', on: 'click', cb: events.onCreateThread },
     { id: '.create-reply', on: 'click', cb: events.onCreateReply },
     { id: '#create-subforum', on: 'submit', cb: events.onCreateSubforum },
-    { id: '.my-threads', on: 'click', cb: events.onMyThreads },
-    { id: '#createSubforumButton', on: 'click', cb: events.onCreateSubforum }
+    { id: '.my-threads', on: 'click', cb: events.onMyThreads }
   ]
 
   for (const i in eventList) {

@@ -1,6 +1,5 @@
 const ui = require('./auth/ui')
 
-
 // Going to redo all of this for V2. I will set the error handling to the server
 // instead of relying on the client.
 
