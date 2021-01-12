@@ -1,7 +1,7 @@
 const store = require('./../store')
 
 const pages = ['unauthenticated', 'authenticated', 'settings']
-const section = ['forum', 'subforum', 'thread']
+const section = ['forum', 'subforum', 'thread', 'create']
 let globalTimeout
 
 const toggleForm = (form, state) => {
@@ -62,6 +62,10 @@ const onSignOut = () => {
   alert('Successfully signed out', 'success', false)
 }
 
+const onChangePassword = () => {
+  alert('Successfully changed your password', 'success', true)
+}
+
 const alert = (message, type = 'success', authenticated) => {
   if (globalTimeout) { clearTimeout(globalTimeout) }
   authenticated ? authenticated = 'authenticated' : authenticated = 'unauthenticated'
@@ -73,6 +77,7 @@ module.exports = {
   onSignUp,
   onSignIn,
   onSignOut,
+  onChangePassword,
   toggleForm,
   navUpdate,
   alert

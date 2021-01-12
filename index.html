@@ -12,6 +12,51 @@
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body>
+      <div class="modal fade" id="createSubforumModal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="createSubforumModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="createSubforumModalLabel">Create Subforum</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form id="create-subforum">
+                <div class="form-group mt-3 mb-3">
+                  <input type="text" class="form-control" id="subforumTitle" placeholder="Subforum Title" name="subforum[title]">
+                </div>
+                <button type="submit" class="btn btn-primary w-100 mb-3">Create Subforum</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal fade" id="changePasswordModal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="changePasswordModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="changePasswordModalLabel">Change Password</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form id="change-password">
+                <div class="form-group mt-3">
+                  <input type="password" class="form-control" id="oldPassword" placeholder="Old Password" name="passwords[old]">
+                </div>
+                <div class="form-group">
+                  <input type="password" class="form-control" id="newPassword" placeholder="New Password" name="passwords[new]">
+                </div>
+                <button type="submit" class="btn btn-primary w-100 mb-3">Change Password</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="container">
           <a class="navbar-brand" href="#">thisisaforum</a>
@@ -117,9 +162,11 @@
                   <div class="col-12 col-md-4 col-lg-3">
                     <div class="section-title">User Action</div>
                     <div class="box mb-3 p-0">
-                      <div class="user-action-link my-threads text-center w-100">Create Subforum</div>
+                      <div class="user-action-link create-subforum text-center w-100" data-toggle="modal" data-target="#createSubforumModal">Create Subforum</div>
                       <hr class="m-0" />
-                      <div class="user-action-link my-threads text-center w-100">My Threads</div>
+                      <div class="user-action-link my-threads text-center w-100">View My Threads</div>
+                      <hr class="m-0" />
+                      <div class="user-action-link text-center w-100" id="change-password" data-toggle="modal" data-target="#changePasswordModal">Change Password</div>
                     </div>
                   </div>
                 </div>

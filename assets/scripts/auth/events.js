@@ -47,6 +47,18 @@ const onSignOut = (event) => {
   }
 }
 
+const onChangePassword = (event) => {
+  event.preventDefault()
+
+  $('#changePasswordModal').modal('hide')
+  const formData = getFormFields(event.target)
+
+  api.changePassword(formData, store.user.token)
+    .then(ui.onChangePassword)
+    .catch(errorHandler.changePassword)
+    .then(() => { event.target.reset() })
+}
+
 /*
 ====== Forum Events ======
 */
@@ -63,12 +75,25 @@ const onMyThreads = () => {
   console.log('my threads')
 }
 
+const onCreateSubforum = (event) => {
+  event.preventDefault()
+
+  $('#createSubforumModal').modal('hide')
+  const formData = getFormFields(event.target)
+
+  // api.createSubforum(formData)
+  //   .then(console.log)
+  //   .catch(console.error)
+}
+
 module.exports = {
   onSignUp,
   onSignIn,
   onSignOut,
+  onChangePassword,
 
   onCreateThread,
   onCreateReply,
+  onCreateSubforum,
   onMyThreads
 }

@@ -1,8 +1,8 @@
 const ui = require('./auth/ui')
 
-/*
-Going to redo all of this for V2
-*/
+
+// Going to redo all of this for V2. I will set the error handling to the server
+// instead of relying on the client.
 
 const notEmpty = (data) => {
   let passed = true
@@ -43,7 +43,11 @@ const signUp = (error, credentials) => {
       ui.alert('Password fields cannot be empty', 'danger', false)
     }
   } else {
-    ui.alert('Error status: ' + error.status, 'danger', false)
+    if (error.status === 0) {
+      ui.alert('Error status: No connection to the API', 'danger', false)
+    } else {
+      ui.alert('Error status: ' + error.status, 'danger', false)
+    }
   }
 }
 
@@ -51,7 +55,11 @@ const signIn = (error, credentials) => {
   if (error.status === 401) {
     ui.alert('Email or password is incorrect', 'danger', false)
   } else {
-    ui.alert('Error status: ' + error.status, 'danger', false)
+    if (error.status === 0) {
+      ui.alert('Error status: No connection to the API', 'danger', false)
+    } else {
+      ui.alert('Error status: ' + error.status, 'danger', false)
+    }
   }
 }
 
