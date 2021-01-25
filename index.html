@@ -57,6 +57,28 @@
         </div>
       </div>
 
+      <div class="modal fade" id="updateSubforumModal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="updateSubforumModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="updateSubforumModalLabel">Update Subforum</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form id="update-subforum">
+                <div class="form-group mt-3">
+                  <input type="text" class="form-control" id="newSubforumTitle" placeholder="New Subforum Title" name="subforum[title]">
+                  <input type="hidden" class="form-control" id="newSubforumId" name="subforum[id]">
+                </div>
+                <button type="submit" class="btn btn-primary w-100 mb-3">Update Subforum</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="container">
           <a class="navbar-brand" href="#">thisisaforum</a>
@@ -134,16 +156,16 @@
                         <li class="breadcrumb-item active">Home</li>
                       </ol>
                     </nav>
-                    <div class="box p-0 mb-3">
+                    <div class="box p-0 mb-3" id="forum-box">
                       <table class="table forum mb-0">
                         <thead>
                           <tr>
                             <th class="title-col">Title</th>
                             <th class="text-center threads-col">Threads</th>
+                            <th class="text-center action-col">Actions</th>
                           </tr>
                         </thead>
-                        <tbody>
-                        </tbody>
+                        <tbody></tbody>
                       </table>
                     </div>
                   </div>
@@ -151,8 +173,8 @@
                     <div class="section-title">User Action</div>
                     <div class="box mb-3 p-0">
                       <div class="user-action-link create-subforum text-center w-100" data-toggle="modal" data-target="#createSubforumModal">Create Subforum</div>
-                      <hr class="m-0" />
-                      <div class="user-action-link my-threads text-center w-100">View My Threads</div>
+                      <!-- <hr class="m-0" />
+                      <div class="user-action-link my-threads text-center w-100">View My Threads</div> -->
                       <hr class="m-0" />
                       <div class="user-action-link text-center w-100" id="change-password" data-toggle="modal" data-target="#changePasswordModal">Change Password</div>
                     </div>
@@ -176,25 +198,10 @@
                             <th class="title-col">Title</th>
                             <th class="text-center replies-col">Replies</th>
                             <th class="text-center poster-col">Poster</th>
+                            <th class="text-center action-col">Actions</th>
                           </tr>
                         </thead>
-                        <tbody>
-                          <tr>
-                            <td class="align-middle"><a href="#">This is a title</a></td>
-                            <td class="text-center align-middle">3</td>
-                            <td class="text-center align-middle">Otto</td>
-                          </tr>
-                          <tr>
-                            <td class="align-middle"><a href="#">This is another title</a></td>
-                            <td class="text-center align-middle">0</td>
-                            <td class="text-center align-middle">Thornton</td>
-                          </tr>
-                          <tr>
-                            <td class="align-middle"><a href="#">Wow what an amazing forum website let's see how long this title can be</a></td>
-                            <td class="text-center align-middle">1</td>
-                            <td class="text-center align-middle">the Bird</td>
-                          </tr>
-                        </tbody>
+                        <tbody></tbody>
                       </table>
                     </div>
                   </div>

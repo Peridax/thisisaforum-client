@@ -71,9 +71,18 @@ const changePassword = (error) => {
   }
 }
 
+const subforums = (error) => {
+  if (error.status === 422) {
+    ui.alert('You cannot name a subforum as an existing subforum', 'danger', true)
+  } else {
+    ui.alert('There was a problem creating/updating your subforum', 'danger', true)
+  }
+}
+
 module.exports = {
   signUp,
   signIn,
   changePassword,
-  notEmpty
+  notEmpty,
+  subforums
 }

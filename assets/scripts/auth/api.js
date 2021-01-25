@@ -58,6 +58,31 @@ const getSubforums = (token) => {
   })
 }
 
+const updateSubforum = (subforum, token) => {
+  return $.ajax({
+    url: config.apiUrl + '/subforum/' + subforum.subforum.id,
+    method: 'PATCH',
+    headers: {
+      Authorization: 'Bearer ' + token
+    },
+    data: {
+      subforum: {
+        title: subforum.subforum.title
+      }
+    }
+  })
+}
+
+const deleteSubforum = (id, token) => {
+  return $.ajax({
+    url: config.apiUrl + '/subforum/' + id,
+    method: 'DELETE',
+    headers: {
+      Authorization: 'Bearer ' + token
+    }
+  })
+}
+
 module.exports = {
   signUp,
   signOut,
@@ -65,5 +90,7 @@ module.exports = {
   changePassword,
 
   createSubforum,
-  getSubforums
+  getSubforums,
+  updateSubforum,
+  deleteSubforum
 }

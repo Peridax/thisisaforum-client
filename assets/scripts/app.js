@@ -5,21 +5,25 @@ const events = require('./auth/events')
 $(() => {
   // Setting up a list of elements and their corresponding
   // event to trigger their callback function
+  // el = element | on = event | cb = callback
   const eventList = [
     // User forms & buttons
-    { id: '#sign-up', on: 'submit', cb: events.onSignUp },
-    { id: '#sign-in', on: 'submit', cb: events.onSignIn },
-    { id: '#logout-link', on: 'click', cb: events.onSignOut },
-    { id: '#change-password', on: 'submit', cb: events.onChangePassword },
+    { el: '#sign-up', on: 'submit', cb: events.onSignUp },
+    { el: '#sign-in', on: 'submit', cb: events.onSignIn },
+    { el: '#logout-link', on: 'click', cb: events.onSignOut },
+    { el: '#change-password', on: 'submit', cb: events.onChangePassword },
 
     // Forum & thread buttons
-    { id: '.create-thread', on: 'click', cb: events.onCreateThread },
-    { id: '.create-reply', on: 'click', cb: events.onCreateReply },
-    { id: '#create-subforum', on: 'submit', cb: events.onCreateSubforum },
-    { id: '.my-threads', on: 'click', cb: events.onMyThreads }
+    { el: '.create-thread', on: 'click', cb: events.onCreateThread },
+    { el: '.create-reply', on: 'click', cb: events.onCreateReply },
+    { el: '#create-subforum', on: 'submit', cb: events.onCreateSubforum },
+    { el: '.my-threads', on: 'click', cb: events.onMyThreads },
+
+    // Update subforum
+    { el: '#update-subforum', on: 'submit', cb: events.onUpdateSubforum }
   ]
 
   for (const i in eventList) {
-    $(eventList[i].id).on(eventList[i].on, eventList[i].cb)
+    $(eventList[i].el).on(eventList[i].on, eventList[i].cb)
   }
 })

@@ -77,6 +77,7 @@ const onMyThreads = () => {
   console.log('my threads')
 }
 
+// Subforums
 const onCreateSubforum = (event) => {
   event.preventDefault()
 
@@ -87,7 +88,22 @@ const onCreateSubforum = (event) => {
     .then(ui.onCreateSubforum)
     .then(() => api.getSubforums(store.user.token))
     .then(ui.updateSubforums)
-    .catch(console.error)
+    .catch(errorHandler.subforums)
+    .then(() => { event.target.reset() })
+}
+
+const onUpdateSubforum = (event) => {
+  event.preventDefault()
+
+  $('#updateSubforumModal').modal('hide')
+  const formData = getFormFields(event.target)
+  console.log(formData)
+
+  api.updateSubforum(formData, store.user.token)
+    .then(ui.onUpdateSubforum)
+    .then(() => api.getSubforums(store.user.token))
+    .then(ui.updateSubforums)
+    .catch(errorHandler.subforums)
     .then(() => { event.target.reset() })
 }
 
@@ -100,5 +116,7 @@ module.exports = {
   onCreateThread,
   onCreateReply,
   onCreateSubforum,
-  onMyThreads
+  onMyThreads,
+
+  onUpdateSubforum
 }
