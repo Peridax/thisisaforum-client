@@ -59,7 +59,7 @@ nav {
   display: none;
 }
 
-.subforum, .thread {
+.home, .subforum {
   display: none;
 }
 
@@ -118,11 +118,11 @@ nav {
   @extend .forum;
 
   .title-col {
-    width: percentage(6/10);
+    width: percentage(7/10);
   }
 
-  .replies-col, .action-col {
-    width: percentage(2/10);
+  .replies-col {
+    width: percentage(3/10);
   }
 }
 

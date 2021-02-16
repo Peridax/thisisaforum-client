@@ -1,5 +1,8 @@
 # thisisaforum-client
 
+### Links
+You can access the backend repo [here](https://github.com/Peridax/thisisaforum-server). You can also access the deployed client  [here](https://thisisaforum.com).
+
 ### Description
 This is the frontend client for *thisisaforum*. All the client rendering is handled here. The end goal for this project is to create a forum website where users can chat with each other via threads within subforums. Subforums categorize the chats. Users can also reply to threads.
 

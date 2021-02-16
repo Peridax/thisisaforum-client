@@ -33,6 +33,30 @@
         </div>
       </div>
 
+      <div class="modal fade" id="createThreadModal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="createThreadModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="createThreadModalLabel">Create Thread</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form id="create-thread">
+                <div class="form-group mt-3 mb-3">
+                  <input type="text" class="form-control" id="threadTitle" placeholder="Thread Title" name="thread[title]">
+                </div>
+                <div class="form-group mb-3">
+                  <textarea class="form-control" id="threadBody" rows="3" placeholder="Thread Body" name="thread[body]"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary w-100 mb-3">Create Thread</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div class="modal fade" id="changePasswordModal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="changePasswordModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
@@ -187,8 +211,8 @@
                   <div class="col-12 col-md-8 col-lg-9">
                     <nav aria-label="breadcrumb">
                       <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Subforum</li>
+                        <li class="breadcrumb-item home-update"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item subforum-title active"></li>
                       </ol>
                     </nav>
                     <div class="box p-0 mb-3">
@@ -197,8 +221,6 @@
                           <tr>
                             <th class="title-col">Title</th>
                             <th class="text-center replies-col">Replies</th>
-                            <th class="text-center poster-col">Poster</th>
-                            <th class="text-center action-col">Actions</th>
                           </tr>
                         </thead>
                         <tbody></tbody>
@@ -208,9 +230,9 @@
                   <div class="col-12 col-md-4 col-lg-3">
                     <div class="section-title">User Action</div>
                     <div class="box mb-3 p-0">
-                      <div class="user-action-link create-thread text-center w-100">Create Thread</div>
+                      <div class="user-action-link create-thread text-center w-100" data-toggle="modal" data-target="#createThreadModal">Create Thread</div>
                       <hr class="m-0" />
-                      <div class="user-action-link my-threads text-center w-100">My Threads</div>
+                      <div class="user-action-link text-center w-100" id="change-password" data-toggle="modal" data-target="#changePasswordModal">Change Password</div>
                     </div>
                   </div>
                 </div>
@@ -218,11 +240,11 @@
 
               <div class="thread">
                 <div class="row">
-                  <div class="col-12 col-md-8 col-lg-9">
+                  <div class="col-12">
                     <nav aria-label="breadcrumb">
                       <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item"><a href="#">Subforum</a></li>
+                        <li class="breadcrumb-item home-update"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item subforum-update subforum-title-next"><a href="#">Subforum</a></li>
                         <li class="breadcrumb-item active">This is a title</li>
                       </ol>
                     </nav>
@@ -230,29 +252,12 @@
                       <table class="table thread mb-0">
                         <thead>
                           <tr>
-                            <th class="title-col">This is a title</th>
+                            <th class="title-col thread-title"></th>
+                            <th class="title-col text-right">Posted by <span class="thread-author"></span></th>
                           </tr>
                         </thead>
-                        <tbody>
-                          <tr>
-                            <td class="align-middle">This is a title</td>
-                          </tr>
-                          <tr>
-                            <td class="align-middle">This is another title</td>
-                          </tr>
-                          <tr>
-                            <td class="align-middle">Wow what an amazing forum website let's see how long this title can be</td>
-                          </tr>
-                        </tbody>
+                        <tbody></tbody>
                       </table>
-                    </div>
-                  </div>
-                  <div class="col-12 col-md-4 col-lg-3">
-                    <div class="section-title">User Action</div>
-                    <div class="box mb-3 p-0">
-                      <div class="user-action-link create-reply text-center w-100">Create Reply</div>
-                      <hr class="m-0" />
-                      <div class="user-action-link my-threads text-center w-100">My Threads</div>
                     </div>
                   </div>
                 </div>

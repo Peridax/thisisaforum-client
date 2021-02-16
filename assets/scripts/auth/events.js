@@ -65,8 +65,18 @@ const onChangePassword = (event) => {
 ====== Forum Events ======
 */
 
-const onCreateThread = () => {
-  console.log('create thread')
+const onCreateThread = (event) => {
+  event.preventDefault()
+
+  $('#createThreadModal').modal('hide')
+  const formData = getFormFields(event.target)
+
+  api.createThread(store.subforum._id, store.user.token, formData.thread)
+    .then(data => api.getSubforum(data.subforum.title, store.user.token))
+    .then(ui.loadSubforum)
+    .then(() => ui.showSection('subforum'))
+    .catch(console.error)
+    .then(() => { event.target.reset() })
 }
 
 const onCreateReply = () => {
@@ -107,10 +117,46 @@ const onUpdateSubforum = (event) => {
     .then(() => { event.target.reset() })
 }
 
+const onHomeClick = (event) => {
+  api.getSubforums(store.user.token)
+    .then(ui.updateSubforums)
+    .then(() => { ui.showSection('home') })
+    .catch(console.error)
+}
+
+const onSubforumClick = (event) => {
+  api.getSubforum(store.subforum.title, store.user.token)
+    .then(ui.loadSubforum)
+    .then(() => { ui.showSection('subforum') })
+    .catch(console.error)
+}
+
+/*
+====== Nav Events ======
+*/
+
+const onClickNavLink = (event) => {
+  const id = $(event.target).attr('id')
+
+  switch (id) {
+    case 'home-link':
+      if (store.user) {
+        onHomeClick()
+      }
+
+      break
+    case 'logout-link':
+      onSignOut(event)
+      break
+    default:
+      console.log('No idea what link you pressed.')
+      break
+  }
+}
+
 module.exports = {
   onSignUp,
   onSignIn,
-  onSignOut,
   onChangePassword,
 
   onCreateThread,
@@ -118,5 +164,9 @@ module.exports = {
   onCreateSubforum,
   onMyThreads,
 
-  onUpdateSubforum
+  onHomeClick,
+  onUpdateSubforum,
+  onSubforumClick,
+
+  onClickNavLink
 }

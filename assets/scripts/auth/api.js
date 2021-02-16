@@ -83,6 +83,55 @@ const deleteSubforum = (id, token) => {
   })
 }
 
+const getSubforum = (subforum, token) => {
+  return $.ajax({
+    url: config.apiUrl + '/subforum/' + subforum,
+    method: 'GET',
+    headers: {
+      Authorization: 'Bearer ' + token
+    }
+  })
+}
+
+const createThread = (subforum, token, thread) => {
+  return $.ajax({
+    url: config.apiUrl + '/subforum/' + subforum,
+    method: 'POST',
+    headers: {
+      Authorization: 'Bearer ' + token
+    },
+    data: {
+      thread: thread
+    }
+  })
+}
+
+const fetchThread = (subforum, token, thread) => {
+  return $.ajax({
+    url: config.apiUrl + '/thread/' + thread,
+    method: 'GET',
+    headers: {
+      Authorization: 'Bearer ' + token
+    },
+    data: {
+      subforum: subforum
+    }
+  })
+}
+
+const deleteThread = (subforum, token, thread) => {
+  return $.ajax({
+    url: config.apiUrl + '/thread/' + thread,
+    method: 'DELETE',
+    headers: {
+      Authorization: 'Bearer ' + token
+    },
+    data: {
+      id: subforum
+    }
+  })
+}
+
 module.exports = {
   signUp,
   signOut,
@@ -92,5 +141,10 @@ module.exports = {
   createSubforum,
   getSubforums,
   updateSubforum,
-  deleteSubforum
+  deleteSubforum,
+  getSubforum,
+
+  createThread,
+  fetchThread,
+  deleteThread
 }
